@@ -5,17 +5,15 @@ services:
     image: mysql:8.0
     container_name: mysql_container
     environment:
-      MYSQL_ROOT_PASSWORD: mahmoud               # Root password
-      MYSQL_DATABASE: achatdb                 # Database name
-      MYSQL_USER: user                             # Database user
-      MYSQL_PASSWORD: userpassword                    # User password
+      MYSQL_ROOT_PASSWORD: mahmoud
+      MYSQL_DATABASE: achatdb
     ports:
-      - "3307:3306"                                # Expose MySQL port
+      - "3307:3306"  # Expose MySQL port
     volumes:
-      - mysql_data:/var/lib/mysql  # Use the correct host path                  # Persistent storage for data
+      - mysql_data:/var/lib/mysql  # Use named volume for persistent storage
 
   app:
-    image: chaarimahmoud/tp_devops:latest           # Replace with your Docker image
+    image: chaarimahmoud/tp_devops:latest  # Replace with your Docker image
     container_name: achat_app
     depends_on:
       - db
@@ -24,7 +22,7 @@ services:
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: mahmoud
     ports:
-      - "8089:8089"                                    # Expose app port to localhost
+      - "8089:8089"  # Expose app port to localhost
 
 volumes:
-  mysql_data:
+  mysql_data: {}
