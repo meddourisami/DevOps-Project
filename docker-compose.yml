@@ -7,12 +7,12 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: mahmoud               # Root password
       MYSQL_DATABASE: achatdb                 # Database name
-      MYSQL_USER: root                             # Database user
-      MYSQL_PASSWORD: mahmoud                    # User password
+      MYSQL_USER: user                             # Database user
+      MYSQL_PASSWORD: userpassword                    # User password
     ports:
       - "3307:3306"                                # Expose MySQL port
     volumes:
-      - /home/mysql/data:/var/lib/mysql  # Use the correct host path                  # Persistent storage for data
+      - mysql_data:/var/lib/mysql  # Use the correct host path                  # Persistent storage for data
 
   app:
     image: chaarimahmoud/tp_devops:latest           # Replace with your Docker image
